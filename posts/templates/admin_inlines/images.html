@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  {% if comments %}
+    <h1>لیست تمام کامنتدهای این پست </h1>
+    {% for comment in comments %}
+      <div>
+        <h3><a href="/admin/users/user/{{comment.post.marke.id}}/change/">{{ comment.post.marke }}</a></h3>
+        <h3><a href="/admin/posts/comments/{{comment.id}}/change/">{{ comment.comment }}</a></h3>
+        <p>زمان ایجاد <span>{{ comment.time_create }}</span></p>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <a href="{% url "custom_url_admin:add_comment" id_post%}">افزودن کامنت</a>
+{% endblock %}
